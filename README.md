@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a Go package for accessing Music Player Daemon (MPD)
+This is a forked version of the Go package for accessing Music Player Daemon (MPD) by [fhs](https://github.com/fhs)
 (http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki)
 
 Old repository: https://code.google.com/p/gompd/
@@ -11,7 +11,7 @@ Old repository: https://code.google.com/p/gompd/
 
 How to install:
 
-	$ go get github.com/fhs/gompd/mpd
+	$ go get github.com/pulse0ne/gompd/mpd
 
 ## Documentation
 
