@@ -1,11 +1,8 @@
-[![Build Status](https://travis-ci.org/fhs/gompd.png)](https://travis-ci.org/fhs/gompd)
-
 ## Overview
 
 This is a forked version of the Go package for accessing Music Player Daemon (MPD) by [fhs](https://github.com/fhs)
-(http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki)
 
-Old repository: https://code.google.com/p/gompd/
+MPD wiki: (http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki)
 
 ## Installation
 
@@ -15,5 +12,5 @@ How to install:
 
 ## Documentation
 
-Documentation can be found here:
+Documentation for the original repo can be found here:
 http://godoc.org/github.com/fhs/gompd/mpd
