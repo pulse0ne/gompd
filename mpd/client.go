@@ -455,6 +455,11 @@ func (c *Client) Clear() error {
 	return c.okCmd("clear")
 }
 
+// SwapID swaps two songs (by ID) in the current playlist.
+func (c *Client) SwapID(id1, id2 uint) error {
+	return c.okCmd("swapid %d %d", id1, id2)
+}
+
 // Shuffle shuffles the tracks from postion start to position end in the
 // current playlist. If start or end is negative, the whole playlist is
 // shuffled.
