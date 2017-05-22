@@ -44,7 +44,8 @@ func quoteArgs(args []string) string {
 
 // Client represents a client connection to a MPD server.
 type Client struct {
-	text *textproto.Conn
+	text   *textproto.Conn
+	Closed chan int
 }
 
 // Attrs is a set of attributes returned by MPD.
@@ -64,7 +65,7 @@ func Dial(network, addr string) (c *Client, err error) {
 	if line[0:6] != "OK MPD" {
 		return nil, textproto.ProtocolError("no greeting")
 	}
-	return &Client{text: text}, nil
+	return &Client{text: text, Closed: make(chan int, 1)}, nil
 }
 
 // DialAuthenticated connects to MPD listening on address addr (e.g. "127.0.0.1:6600")
@@ -104,6 +105,7 @@ func (c *Client) Close() (err error) {
 		err = c.text.Close()
 		c.text = nil
 	}
+	c.Closed <- 1
 	return
 }
 
@@ -299,6 +301,11 @@ func (c *Client) Seek(pos, time int) error {
 // (not position in playlist).
 func (c *Client) SeekID(id, time int) error {
 	return c.okCmd("seekid %d %d", id, time)
+}
+
+// SeekCur seeks to the position time (in seconds) of the currently playing song
+func (c *Client) SeekCur(time int) error {
+	return c.okCmd("seekcur %d", time)
 }
 
 // Stop stops playback.
